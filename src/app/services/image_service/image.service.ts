@@ -23,23 +23,26 @@ export class ImageService {
 
   /**
    * @param {number} id
-   * @returns Image
+   * @returns Image | undefined
    * @memberof ImageService
    * @description Returns the image with the given id
+   * @example getImage(1);
+   * @returns Image | undefined
    */
-  getImage(id: number): Image {
-    return this.images[id];
+  getImage(id: number): Image | undefined {
+    return this.images.find(image => image.id === id);
   }
 
   /**
+   * @param {number} startIndex
    * @param {number} numberOfImages
    * @memberof ImageService
-   * @description Adds the given number of images to the images array
-   * @example addImages(100);
+   * @description Adds new images to the images array
+   * @example addImages(0, 10);
    * @returns void
    */
-  addImages(startindex: number, numberOfImages: number): void {
-    const newImages = this.mockDataService.createMockImages(numberOfImages, startindex);
+  addImages(startIndex: number, numberOfImages: number): void {
+    const newImages = this.mockDataService.createMockImages(numberOfImages, startIndex);
     this.images.push(...newImages);
   }
 

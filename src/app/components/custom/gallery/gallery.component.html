@@ -1,0 +1,15 @@
+<div class="gallery-container">
+  <app-card
+    *ngFor="let imageData of imageDataArray"
+    [image]="imageData.photo"
+    (click)="openViewer(imageData)"
+    style="max-width: 500px;"
+    >
+      <h2 title># {{ imageData.id }}</h2>
+      <p body>{{ imageData.text }}</p>
+  </app-card>
+
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>

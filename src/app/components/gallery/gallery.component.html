@@ -1,8 +1,0 @@
-
-<div class="gallery-container">
-  <app-image *ngFor="let imageData of imageDataArray" [image]="imageData"></app-image>
-
-  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
-    <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
-</div>

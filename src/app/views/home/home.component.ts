@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { GalleryComponent } from 'src/app/components/gallery/gallery.component';
+import { GalleryComponent } from 'src/app/components/custom/gallery/gallery.component';
 import { Image } from 'src/app/interfaces/image.interface';
 import { ImageService } from 'src/app/services/image_service/image.service';
 

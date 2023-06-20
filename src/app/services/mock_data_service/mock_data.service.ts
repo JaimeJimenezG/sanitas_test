@@ -18,7 +18,7 @@ export class MockDataService {
   createMockImage(id: number): Image {
     return {
       id,
-      photo: `https://picsum.photos/id/${id}/500/500`,
+      photo: `https://picsum.photos/id/${id}/500/200`,
       text: faker.lorem.sentence()
     };
   }
@@ -32,7 +32,7 @@ export class MockDataService {
   createDefaultImage(): Image {
     return {
       id: 0,
-      photo: 'https://picsum.photos/id/1/500/500',
+      photo: 'https://picsum.photos/id/1/500/200',
       text: 'Error trying to load the image'
     };
   }
@@ -49,7 +49,7 @@ export class MockDataService {
     const imageDataArray: Image[] = [];
     let indexStart = indexStartbounce || 1;
     let indexEnd = indexStart + numberOfImages || 0;
-    for (let index = indexStart; index <= indexEnd; index++) {
+    for (let index = indexStart; index < indexEnd; index++) {
       imageDataArray.push(this.createMockImage(index));
     }
     return imageDataArray;

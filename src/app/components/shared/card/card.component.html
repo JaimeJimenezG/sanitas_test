@@ -1,0 +1,14 @@
+<ion-card class="ion-card-container">
+  <img mat-card-image [src]="image" width="100%"> <!-- TODO: add alt -->
+  <ion-card-header>
+    <ion-card-title>
+      <ng-content select="[title]"></ng-content>
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ng-content select="[body]"></ng-content>
+  </ion-card-content>
+
+  <ng-content select="[buttons]"></ng-content>
+</ion-card>
