@@ -3,14 +3,15 @@ import { MockDataService } from '../mock_data_service/mock_data.service';
 import { Image } from 'src/app/interfaces/image.interface';
 
 @Injectable({
-  providedIn: 'root' // TODO: Change to the correct module
+  providedIn: 'platform'
 })
 export class ImageService {
 
-  private images = this.mockDataService.createMockImages(100); // 4000 is the number of images to be generated
+  private readonly MAX_NUMBER_OF_IMAGES = 1000;
+
+  private images = this.mockDataService.createMockImages(100); // 100 is the initial number of images
 
   constructor(private mockDataService: MockDataService ) { }
-
 
   /**
    * @returns Image[]
@@ -43,7 +44,13 @@ export class ImageService {
    */
   addImages(startIndex: number, numberOfImages: number): void {
     const newImages = this.mockDataService.createMockImages(numberOfImages, startIndex);
-    this.images.push(...newImages);
+    // this line controls that the number of images to add is not greater than the max number of images
+    const imagesToAdd = newImages.length <= this.maxNumberofImagesToAdd() ? newImages : newImages.slice(0, this.maxNumberofImagesToAdd() + 1); // +1 because the slice method does not include the last element
+    this.images.push(...imagesToAdd);
+  }
+
+  maxNumberofImagesToAdd(): number {
+    return this.MAX_NUMBER_OF_IMAGES - this.images.length;
   }
 
   /**
@@ -55,7 +62,6 @@ export class ImageService {
    * @example getRangeofImages(0, 10);
    */
   getRangeOfImages(start: number, end: number): Image[] {
-    console.log(start, end)
     return this.images.slice(start, end);
   }
 
@@ -69,4 +75,6 @@ export class ImageService {
   getDefaultImage(): Image {
     return this.mockDataService.createDefaultImage();
   }
+
+
 }

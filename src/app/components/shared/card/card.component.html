@@ -1,5 +1,5 @@
 <ion-card class="ion-card-container">
-  <img mat-card-image [src]="image" width="100%"> <!-- TODO: add alt -->
+  <img mat-card-image [src]="image" width="100%" [alt]="image" (error)="onLoadError($event)">
   <ion-card-header>
     <ion-card-title>
       <ng-content select="[title]"></ng-content>

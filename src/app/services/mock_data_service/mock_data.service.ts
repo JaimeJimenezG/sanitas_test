@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 import { Image } from 'src/app/interfaces/image.interface';
 
 @Injectable({
-  providedIn: 'root' // TODO: Change to the correct module
+  providedIn: 'platform'
 })
 export class MockDataService {
 
@@ -30,9 +30,11 @@ export class MockDataService {
    * @description Creates a default image
    */
   createDefaultImage(): Image {
+    // pick a random number between 1 and 10 to get a random image
+    const randomId = Math.trunc(Math.floor(Math.random() * (10 - 1 + 1) + 1));
     return {
       id: 0,
-      photo: 'https://picsum.photos/id/1/500/200',
+      photo: `https://picsum.photos/id/${randomId}/500/200`,
       text: 'Error trying to load the image'
     };
   }

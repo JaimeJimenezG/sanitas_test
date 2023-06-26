@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { ImageDirective } from './image.directive';
 
 @Component({
   template: '<img default src="invalid-url.jpg">'
@@ -25,6 +24,8 @@ describe('ImageDirective', () => {
     expect(component).toBeTruthy();
   });
 
-  // TODO: Test the directive make sure to update URL
-
+  it('should update url on error', () => {
+    const imgElement = fixture.debugElement.query(By.css('img')).nativeElement;
+    spyOn(imgElement, 'setAttribute');
+    imgElement.dispatchEvent(new Event('error'));  });
 });

@@ -9,7 +9,8 @@ import { ImageService } from 'src/app/services/image_service/image.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [IonicModule, GalleryComponent]
+  imports: [IonicModule, GalleryComponent],
+  providers: [ImageService]
 })
 export class HomeComponent implements OnInit {
 
